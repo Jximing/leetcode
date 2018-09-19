@@ -5,7 +5,7 @@ package queue;
  * 一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。
  * 你可以假设网格的四个边均被水包围。
  */
-public class Solution {
+public class NumOfIsland {
     public int numIslands(char[][] grid) {
         if(grid.length == 0 || grid[0].length ==0){
             return 0;
