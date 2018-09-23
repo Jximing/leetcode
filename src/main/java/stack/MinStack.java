@@ -3,38 +3,48 @@ package stack;
 import sun.dc.pr.PRError;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class MinStack {
 
     /**
      * initialize your data structure here.
      */
-    private ArrayList<Integer> date;
-    private int current;
+    private int[] data;
+    private int length = 16;
+    private int size = 0;
     public MinStack() {
-        date = new ArrayList<Integer>();
-        current=0;
+        data = new int[length];
     }
 
     public void push(int x) {
-        date.add(current++,x);
-        ;
+        checkIsFull();
+        data[size++] = x;
     }
 
     public void pop() {
-        date.remove(--current);
+        size--;
     }
 
     public int top() {
-        return date.get(current-1);
+        if(size==0){
+            return 0;
+        }
+        return data[size-1];
     }
 
     public int getMin() {
         int temp = Integer.MAX_VALUE;
-        for (int a:date) {
-            temp=Math.min(temp,a);
+        for (int i=0;i<size;i++){
+            temp = Math.min(temp,data[i]);
         }
         return temp;
+    }
+
+    private void checkIsFull(){
+        if(length==size){
+            data=Arrays.copyOf(data,length<<=1);
+        }
     }
 }
 
