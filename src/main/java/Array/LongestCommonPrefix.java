@@ -41,7 +41,7 @@ public class LongestCommonPrefix {
         }
         return prefix;
     }
-    
+
     public static void main(String[] args) {
         LongestCommonPrefix lcpf = new LongestCommonPrefix();
         String[] strs = {"abc"};
