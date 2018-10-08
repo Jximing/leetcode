@@ -26,6 +26,26 @@ public class RemoveNthFromEnd {
         return head;
     }
 
+    //更好的思路
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        ListNode fast=head;
+        ListNode slow=head;
+        while(n-->0){
+            fast=fast.next;
+        }
+        ListNode last=null;
+        while(fast!=null){
+            fast=fast.next;
+            last=slow;
+            slow=slow.next;
+        }
+        if(last==null){
+            return head.next;
+        }else{
+            last.next=slow.next;
+        }
+        return head;
+    }
     //比较牛的做法
     int length = 0;
     public ListNode removeNthFromEnd1(ListNode head, int n) {
