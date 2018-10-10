@@ -16,7 +16,7 @@ public class MyDoublyList {
      * Get the value of the index-th node in the linked list. If the index is invalid, return -1.
      */
     public int get(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             return -1;
         }
         return findNode(index).val;
@@ -65,8 +65,8 @@ public class MyDoublyList {
                 ith.prev.next = newNode;
             }
             ith.prev = newNode;
+            size++;
         }
-        size++;
     }
 
     private Node findNode(int index) {
@@ -118,13 +118,20 @@ public class MyDoublyList {
     }
     public static void main(String[] args){
         MyDoublyList linkedList = new MyDoublyList();
-        linkedList.addAtHead(1);
-        linkedList.addAtTail(3);
-        linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
-        linkedList.get(1);            //返回2
-        System.out.println(linkedList.get(1));
-        linkedList.deleteAtIndex(1);  //现在链表是1-> 3
-        linkedList.get(1);            //返回3
-        System.out.println(linkedList.get(1));
+//        linkedList.addAtHead(1);
+//        linkedList.addAtTail(3);
+//        linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
+//        linkedList.get(1);            //返回2
+//        System.out.println(linkedList.get(1));
+//        linkedList.deleteAtIndex(1);  //现在链表是1-> 3
+//        linkedList.get(1);            //返回3
+//        System.out.println(linkedList.get(1));
+        linkedList.get(0);
+        linkedList.addAtIndex(1,2);
+        linkedList.get(0);
+        linkedList.addAtIndex(0,1);
+        linkedList.get(1);
+        linkedList.get(0);
+        linkedList.get(1);
     }
 }
