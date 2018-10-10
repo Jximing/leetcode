@@ -1,5 +1,8 @@
 import java.lang.reflect.Method;
 
+/**
+ * leetcode网站上面报错只给出了方法和对应的参数，通过反射执行方法来调试
+ */
 public class Driver {
 
     public static void main(String[] args) throws Exception {
