@@ -1,6 +1,7 @@
 package linkedlist;
 
 public class Flatten {
+    //递归解法
     public Node flatten(Node head) {
         if (head == null) {
             return null;
@@ -21,19 +22,33 @@ public class Flatten {
             }
         }
         flatten(head.next);
-//        if(head.child!=null){
-//            Node temp = head.next;
-//            Node child = head.child;
-//            head.next = child;
-//            head.child = null;
-//            child.prev = head;
-//            Node mv = head;
-//            while (mv.next!=null){
-//                flatten(head.next);
-//                mv = mv.next;
-//            }
-//            mv.next = temp;
-//        }
+        return head;
+    }
+
+    //非递归解法
+    public Node flatten2(Node head) {
+
+        if(head == null)
+            return head;
+        Node cur = head;
+        while(cur != null) {
+            Node next = cur.next;
+            if(cur.child != null) {
+                Node child = cur.child;
+                cur.next = child;
+                child.prev = cur;
+                cur.child = null;
+                Node tmpChild = child;
+                while(tmpChild != null && tmpChild.next != null) {
+                    tmpChild = tmpChild.next;
+                }
+                tmpChild.next = next;
+                if(next != null) {
+                    next.prev = tmpChild;
+                }
+            }
+            cur = cur.next;
+        }
         return head;
     }
 
