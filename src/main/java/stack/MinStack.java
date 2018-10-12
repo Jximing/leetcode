@@ -1,8 +1,6 @@
 package stack;
 
-import sun.dc.pr.PRError;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 class MinStack {
