@@ -48,6 +48,6 @@ public class Intersection {
         int[] nums1 = {9, 3, 7};
         int[] nums2 = {6, 4, 1, 0, 0, 4, 4, 8, 7};
         Intersection is = new Intersection();
-        System.out.println(Arrays.asList(is.intersection(nums1, nums2)));
+        System.out.println(Arrays.asList(is.intersection(nums1, nums2)).stream());
     }
 }
