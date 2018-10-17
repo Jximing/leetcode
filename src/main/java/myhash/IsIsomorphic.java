@@ -22,6 +22,28 @@ public class IsIsomorphic {
         return true;
     }
 
+    //更好的做法
+    public boolean isIsomorphic1(String s, String t) {
+        int[] s_int = func(s);
+        int[] t_int = func(t);
+        for(int i = 0; i < s.length(); i++){
+            if(s_int[i] != t_int[i])return false;
+        }
+        return true;
+    }
+    public int[] func(String str){
+        int[] res = new int[str.length()];
+        for(int i = 0; i < str.length(); i++){
+            int start = str.indexOf(str.charAt(i));
+            if(start == i){
+                res[i] = i;
+            }else {
+                res[i] = start;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args){
         String s="egg",t = "add";
         IsIsomorphic ii=new IsIsomorphic();
