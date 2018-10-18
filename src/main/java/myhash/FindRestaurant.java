@@ -1,9 +1,6 @@
 package myhash;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FindRestaurant {
     public String[] findRestaurant(String[] list1, String[] list2) {
@@ -33,6 +30,32 @@ public class FindRestaurant {
         return res;
     }
 
+    //更好的做法
+    public String[] findRestaurant1(String[] list1, String[] list2) {
+        List<String> out = new LinkedList<String>();
+        Map<String, Integer> indexMap = new HashMap<String, Integer>();
+        for (int i = 0; i<list1.length; i++) {
+            indexMap.put(list1[i], i);
+        }
+        Integer sum = list1.length + list2.length - 2;
+        for (int i = 0; i<list2.length; i++) {
+            Integer tmp = indexMap.put(list2[i], 1);
+            if (tmp != null) {
+                if(sum == (i + tmp)){
+                    out.add(list2[i]);
+                    continue;
+                }
+                if((i + tmp) < sum){
+                    sum = i + tmp;
+                    out.clear();
+                    out.add(list2[i]);
+                    continue;
+                }
+            }
+        }
+
+        return out.toArray(new String[out.size()]);
+    }
     public static void main(String[] args){
         FindRestaurant fr = new FindRestaurant();
         String[] list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
