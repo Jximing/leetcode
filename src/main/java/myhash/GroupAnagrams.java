@@ -1,9 +1,6 @@
 package myhash;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -27,11 +24,7 @@ public class GroupAnagrams {
                 map.put(key,list);
             }
         }
-        List<List<String>> res= new LinkedList<>();
-        for (List<String> l : map.values()){
-            res.add(l);
-        }
-        return res;
+        return new ArrayList<>(map.values());
     }
     private String toStringKey(int[] inkey){
         String s = "";
@@ -39,5 +32,20 @@ public class GroupAnagrams {
             s= s+((char)c+'a');
         }
         return s;
+    }
+
+    public List<List<String>> groupAnagrams1(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(str);
+        }
+        return new ArrayList<>(map.values());
     }
 }
