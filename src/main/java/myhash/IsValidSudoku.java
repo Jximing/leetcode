@@ -2,6 +2,37 @@ package myhash;
 
 public class IsValidSudoku {
 
+    public boolean isValidSudoku1(char[][] board) {
+        for (int i = 0; i < 9; i++){
+            int[] row = new int[9];
+            int[] line = new int[9];
+            int[] three = new int[9];
+            int RowIndex = 3 * (i / 3);
+            int ColIndex = 3 * (i % 3);
+            for (int j = 0; j < 9; j++){
+                char cl = board[i][j];
+                char cr = board[j][i];
+                if (cl != '.'){
+                    line[cl - '1']++;
+                    if (line[cl - '1'] >= 2)
+                        return false;
+                }
+                if (cr != '.'){
+                    row[cr - '1']++;
+                    if (row[cr - '1'] >= 2)
+                        return false;
+                }
+                char c =board[RowIndex + j/3][ColIndex + j%3];
+                if (c != '.'){
+                    three[c - '1']++;
+                    if (three[c - '1'] >=2)
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public boolean isValidSudoku(char[][] board) {
         for (int row = 0; row < board.length; row++) {
             row = row / 3 * 3 + 3;
