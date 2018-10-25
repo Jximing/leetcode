@@ -77,4 +77,11 @@ public class TopKFrequent {
         return ans;
     }
 
+
+    public static void main(String[] args){
+        TopKFrequent tpk = new TopKFrequent();
+        int[] nums={1,2,2,3,3,4,4,4};
+        tpk.topKFrequent(nums,2);
+        tpk.topKFrequent1(nums,2);
+    }
 }
