@@ -19,6 +19,27 @@ public class MySqrt {
         return 0;
     }
 
+    public int mySqrt1(int x) {
+        if (x == 0) {
+            return 0;
+        }
+        if (x == 1) {
+            return 1;
+        }
+        int ans = 0;
+        int left = 0;
+        int right = x;
+        while (left != right) {
+            int tmp = (left+right)/2;
+            if(tmp <= x/tmp){
+                left = tmp+1;
+            }else {
+                right = tmp;
+            }
+        }
+        return left-1;
+    }
+
     public static void main(String[] args){
         MySqrt ms = new MySqrt();
         System.out.print(ms.mySqrt(2147395600));
