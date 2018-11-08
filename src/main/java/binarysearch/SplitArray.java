@@ -2,9 +2,8 @@ package binarysearch;
 
 public class SplitArray {
 
-    public boolean guess(int[] nums, int mid, int m) {
-
-        int sum = 0;
+    private boolean guess(int[] nums, long mid, int m) {
+        long sum = 0;
         for (int i = 0; i < nums.length; i++) {
             if (sum + nums[i] > mid) {
                 m--;
@@ -16,19 +15,18 @@ public class SplitArray {
                 sum += nums[i];
             }
         }
-        return m == 1;
+        return m >= 1;
     }
 
     public int splitArray(int[] nums, int m) {
-
-        int low = 0;
-        int high = 0;
-        int ans = 0;
+        long low = 0;
+        long high = 0;
+        long ans = 0;
         for (int i = 0; i < nums.length; i++) {
             high += nums[i];
         }
         while (low <= high) {
-            int mid = (low + high) / 2;
+            long mid = low+( high - low ) / 2;
             if (guess(nums, mid, m)) {
                 ans = mid;
                 high = mid - 1;
@@ -36,6 +34,12 @@ public class SplitArray {
                 low = mid + 1;
             }
         }
-        return ans;
+        return (int)ans;
+    }
+
+    public static void main(String[] args){
+        SplitArray sa = new SplitArray();
+        int[] arr = {2,3,1,2,4,3};
+        System.out.println(sa.splitArray(arr,5));
     }
 }
