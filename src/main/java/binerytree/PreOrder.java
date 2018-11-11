@@ -2,6 +2,7 @@ package binerytree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class PreOrder {
 
@@ -19,6 +20,22 @@ public class PreOrder {
             helper(root.left, res);
         if (root.right != null)
             helper(root.right, res);
+    }
+
+    //迭代
+    public List<Integer> preorderTraversal1(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            if(cur!=null){
+                res.add(cur.val);
+                stack.push(cur.right);
+                stack.push(cur.left);
+            }
+        }
+        return res;
     }
 
 }
