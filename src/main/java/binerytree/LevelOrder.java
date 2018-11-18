@@ -41,4 +41,32 @@ public class LevelOrder {
         }
         return list;
     }
+
+    //低柜解法
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        insertOrder(root,list,0);
+        return list;
+    }
+
+    private void insertOrder(TreeNode root,List<List<Integer>> lists,int i){
+        if (root==null){
+            return;
+        }
+        if(lists.size()<i+1){
+            lists.add(new ArrayList<>());
+        }
+        List<Integer> list = lists.get(i);
+        list.add(root.val);
+        insertOrder(root.left,lists,i+1);
+        insertOrder(root.right,lists,i+1);
+    }
 }
+
+
+
+
+
+
+
+
