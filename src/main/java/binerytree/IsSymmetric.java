@@ -1,14 +1,12 @@
 package binerytree;
 
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class IsSymmetric {
 
-    boolean isSymmetrical(TreeNode pRoot) {
-        if (pRoot == null)
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null)
             return true;
-        return isSymmetrical(pRoot.left, pRoot.right);
+        return isSymmetrical(root.left, root.right);
     }
     //比较左右子树对应节点是否相同
     private boolean isSymmetrical(TreeNode pRoot1, TreeNode pRoot2) {
