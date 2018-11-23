@@ -48,4 +48,20 @@ class TreeNode {
     TreeNode(int x) {
         val = x;
     }
+
+    @Override
+    public String toString() {
+        String str = "";
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(this);
+        while (!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            if(cur!=null){
+                str = str + cur.val + "->";
+                stack.push(cur.right);
+                stack.push(cur.left);
+            }
+        }
+        return str;
+    }
 }
