@@ -9,6 +9,13 @@ package binerytree;
  **/
 public class ConnectLinkTree {
 
+    /*
+     * @Author mingjie
+     * @Description //递归解法
+     * @Date 3:04 PM 2018/11/24
+     * @Param [root]
+     * @return void
+     **/
     public void connect(TreeLinkNode root) {
         if (root == null || root.left == null) {
             return;
@@ -25,6 +32,41 @@ public class ConnectLinkTree {
             }
         }
         connect(temp);
+    }
+
+    /*
+     * @Author mingjie
+     * @Description //迭代解法
+     * @Date 3:03 PM 2018/11/24
+     * @Param [root]
+     * @return void
+     **/
+    public void connect1(TreeLinkNode root) {
+        TreeLinkNode head = new TreeLinkNode(0);
+        TreeLinkNode tail = head;
+
+        TreeLinkNode current = root;
+
+        while (current != null) {
+            // 左右节点入队
+            if (current.left != null) {
+                tail = tail.next = current.left;
+            }
+
+            if (current.right != null) {
+                tail = tail.next = current.right;
+            }
+
+            // 一个节点出队
+            current = current.next;
+
+            // head和tail指向下一行，current指向当前行
+            if (current == null) {
+                current = head.next;
+                tail = head;
+                head.next = null;
+            }
+        }
     }
 }
 
