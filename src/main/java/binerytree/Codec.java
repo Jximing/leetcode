@@ -59,6 +59,7 @@ public class Codec {
                 TreeNode newnode = null;
                 if(!cols[j].equals("null")){
                     newnode = new TreeNode(Integer.valueOf(cols[j]));
+                    
                 }
             }
         }
