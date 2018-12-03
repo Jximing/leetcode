@@ -10,13 +10,16 @@ package binerytree;
 public class LowestCommonAncestorBinary {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        while (root.val>p.val&&root.val>q.val){
-            root = root.left;
+        if (root == null || root == p || root == q)
+            return root;
+        if((root.val>p.val&&root.val<q.val)||(root.val<p.val&&root.val>q.val)){
+            return root;
         }
-        while (root.val<p.val&&root.val<q.val){
-            root = root.right;
+        if (root.val>p.val&&root.val>q.val){
+            return lowestCommonAncestor(root.left,p,q);
+        }else{
+            return lowestCommonAncestor(root.right,p,q);
         }
-        return root;
     }
 
 }
