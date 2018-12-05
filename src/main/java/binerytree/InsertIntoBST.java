@@ -10,15 +10,8 @@ package binerytree;
 public class InsertIntoBST {
 
     public TreeNode insertIntoBST(TreeNode root, int val) {
-        if(root.val>val&&(root.left==null||root.left.val<val)){
-            TreeNode cur = new TreeNode(val);
-            cur.left = root.left;
-            root.left = cur;
-        }
-        if(root.val<val&&root.right==null){
-            TreeNode cur = new TreeNode(val);
-            cur.right = root.right;
-            root.right = cur;
+        if(root==null){
+            return new TreeNode(val);
         }
         if(root.val>val){
             root.left = insertIntoBST(root.left,val);
