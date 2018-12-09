@@ -1,5 +1,6 @@
 package NTree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,21 @@ import java.util.List;
 public class PreorderTraversal {
 
     public List<Integer> preorder(Node root) {
-        return null;
+        List<Integer> res = new ArrayList<>();
+        helper(root,res);
+        return res;
+    }
+
+    public void helper(Node root,List<Integer> list){
+        if (root==null){
+            return;
+        }
+        list.add(root.val);
+        if(root.children!=null&&!root.children.isEmpty()){
+            for (Node node:root.children){
+                helper(node,list);
+            }
+        }
     }
 }
 class Node {
