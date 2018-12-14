@@ -32,4 +32,26 @@ public class RotateArray {
         }
     }
 
+
+    public void rotate1(int[][] matrix) {
+        rotate2(matrix, 0, 0, matrix.length);
+    }
+
+    //从外层依次转90度
+    public static void rotate2(int[][] matrix, int f_x, int f_y, int length) {
+        int tem;
+        if (length <= 1) {
+            return;
+        }
+        for (int i = 0; i < length - 1; i++) {
+            tem = matrix[length - 1 + f_x - i][f_y];
+            matrix[length - 1 + f_x - i][f_y] = matrix[length - 1 + f_x][length - 1 + f_y - i];
+            matrix[length - 1 + f_x][length - 1 + f_y - i] = matrix[i + f_x][length - 1 + f_y];
+            matrix[i + f_x][length - 1 + f_y] = matrix[f_x][i + f_y];
+            matrix[f_x][i + f_y] = tem;
+        }
+        rotate2(matrix, f_x + 1, f_x + 1, length - 2);
+    }
+
+
 }
