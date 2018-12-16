@@ -11,28 +11,39 @@ public class ReverseInt {
 
     public int reverse(int x) {
         int res = 0;
-        while (x>0){
-            if (res>Integer.MAX_VALUE/10||(res==Integer.MAX_VALUE/10&&x>7)){
+        while (x > 0) {
+            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && x > 7)) {
                 res = 0;
                 break;
             }
-            res = 10*res+x%10;
-            x/=10;
+            res = 10 * res + x % 10;
+            x /= 10;
         }
-        while (x<0){
-            if (res<Integer.MIN_VALUE/10||(res==Integer.MIN_VALUE/10&&x<-8)){
+        while (x < 0) {
+            if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && x < -8)) {
                 res = 0;
                 break;
             }
-            res = 10*res+x%10;
-            x/=10;
+            res = 10 * res + x % 10;
+            x /= 10;
         }
         return res;
     }
 
-    public static void main(String[] args){
-        ReverseInt ri = new ReverseInt();
-        System.out.print(ri.reverse(1534236469));
+    public int reverse1(int x) {
+        long result = 0L;
+
+        while (x != 0) {
+            int r = x % 10;
+            x = x / 10;
+            result = result * 10 + r;
+        }
+
+        if (result >= Integer.MAX_VALUE || result <= Integer.MIN_VALUE) {
+            return 0;
+        }
+
+        return (int) result;
     }
 
 }
